@@ -1,0 +1,5 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0-noble AS build
+RUN echo hello > /tmp/hello.txt
+
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-noble
+COPY --from=build /tmp/hello.txt /hello.txt
